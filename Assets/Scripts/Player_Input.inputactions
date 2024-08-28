@@ -1,0 +1,118 @@
+{
+    "name": "Player_Input",
+    "maps": [
+        {
+            "name": "Movement",
+            "id": "4c928c5a-acde-4907-9460-6fae40927dd6",
+            "actions": [
+                {
+                    "name": "upDownOne",
+                    "type": "Button",
+                    "id": "979a3a77-edf3-4152-a5db-a484c1a38e5c",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "upDownTwo",
+                    "type": "Button",
+                    "id": "6d1362e2-b9f8-41c1-a606-fe6e9848aa4b",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Space",
+                    "type": "Button",
+                    "id": "479a034e-5562-4934-a824-6fdae2531ae9",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "1D Axis",
+                    "id": "c8c80953-aa98-46e5-8a06-0fc65f43ae31",
+                    "path": "1DAxis",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "upDownOne",
+                    "isComposite": true,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "negative",
+                    "id": "945142bf-5015-4a6c-99d3-4acf6a0d1d95",
+                    "path": "<Keyboard>/s",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "upDownOne",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "positive",
+                    "id": "3e8f5c96-6929-4366-b1c7-84cb98a3d360",
+                    "path": "<Keyboard>/w",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "upDownOne",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "1D Axis",
+                    "id": "4800058f-5105-4561-9eb4-4532f93a24be",
+                    "path": "1DAxis",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "upDownTwo",
+                    "isComposite": true,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "negative",
+                    "id": "3e5d5306-7e98-424e-82cf-2d08a607f4fb",
+                    "path": "<Keyboard>/downArrow",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "upDownTwo",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "positive",
+                    "id": "cec17e76-78e2-491e-8a01-e3db27c910cc",
+                    "path": "<Keyboard>/upArrow",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "upDownTwo",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "",
+                    "id": "68925c5b-668a-4693-bf96-6324e91c2029",
+                    "path": "<Keyboard>/space",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Space",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": []
+}
