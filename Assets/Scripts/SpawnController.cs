@@ -8,8 +8,8 @@ public class SpawnController : MonoBehaviour
     [SerializeField] private GameObject worm;
     [SerializeField] private GameObject greenSlime;
 
-    private float r_min;
-    private float r_max;
+    private int r_min;
+    private int r_max;
     private float enemyNum;
     
     private int laneNum;
@@ -21,23 +21,28 @@ public class SpawnController : MonoBehaviour
 
     void Start()
     {
-        repeat = 2.7f;
-        r_min = 1f;
-        r_max = 10f;
+        repeat = 3.0f;
+        r_min = 0;
+        r_max = 100;
 
         spawnLocation = new Vector3(19.5f, 0, 0);
         InvokeRepeating("Spawn", 0.2f, repeat);
+    }
+
+    public void PausedGame()
+    {
+        StopCoroutine("Spawn");
     }
 
     private void Spawn()
     {
         enemyNum = Random.Range(r_min, r_max);
         RandomLane();
-        if (enemyNum <= 4.5f)
+        if (enemyNum <= 40)
         {
             Instantiate(worm, spawnLocation, Quaternion.identity);
         }
-        else if (enemyNum <= 8.0f && enemyNum >= 4.5f)
+        else if (enemyNum <= 90 && enemyNum >= 50)
         {
             Instantiate(greenSlime, spawnLocation, Quaternion.identity);
         }

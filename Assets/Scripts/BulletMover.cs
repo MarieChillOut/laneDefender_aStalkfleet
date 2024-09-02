@@ -6,10 +6,12 @@ public class BulletMover : MonoBehaviour
 {
     private Rigidbody2D rb;
 
+    [SerializeField] private GameObject explosion;
+
     private int speed;
     void Start()
     {
-        speed = 3;
+        speed = 10;
 
         rb = GetComponent<Rigidbody2D>();
     }
@@ -18,6 +20,7 @@ public class BulletMover : MonoBehaviour
     {
         if (collision.gameObject.tag == "Enemy")
         {
+            Instantiate(explosion, rb.transform.position, Quaternion.identity);
             Destroy(gameObject);
         }
     }

@@ -9,8 +9,10 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private PlayerInput playerInput;
 
     [SerializeField] private GameObject player;
-
+    [SerializeField] private GameObject fire;
     [SerializeField] private GameObject bullet;
+
+    [SerializeField] private AudioClip shootClip;
 
     private Rigidbody2D playerRB;
 
@@ -30,12 +32,15 @@ public class PlayerController : MonoBehaviour
 
     private bool allowFire;
     private bool firing;
-    // Start is called before the first frame update
+    private bool isPaused;
+
     void Start()
     {
+        fire.gameObject.SetActive(false);
+        isPaused = false;
         speed = 5;
 
-        delay = 1f;
+        delay = 1.6f;
 
         offset = new Vector3(0.49f, 0.42f, 0.0f);
 
@@ -59,6 +64,24 @@ public class PlayerController : MonoBehaviour
 
     }
 
+    private void OnDestroy()
+    {
+        moveOne.started -= Move_started;
+        moveTwo.started -= Move_started;
+        moveOne.canceled -= Move_Canceled;
+        moveTwo.canceled -= Move_Canceled;
+
+        shoot.started -= Shoot_started;
+        shoot.canceled -= Shoot_canceled;
+    }
+
+    public void PauseGame()
+    {
+        isPaused = true;
+        isMoving = false;
+        firing = false;
+    }
+
     private void Shoot_canceled(InputAction.CallbackContext obj)
     {
         firing = false;
@@ -66,16 +89,26 @@ public class PlayerController : MonoBehaviour
 
     private void Shoot_started(InputAction.CallbackContext context)
     {
-        firing = true;
+        if (!isPaused)
+        {
+            firing = true;
+        }
     }
 
     IEnumerator Shooting()
     {
+        AudioSource.PlayClipAtPoint(shootClip, playerRB.transform.position);
         allowFire = false;
         playerPos = new Vector3(playerRB.position.x, playerRB.position.y, 0f);
+        fire.gameObject.SetActive(true);
         Instantiate(bullet, playerPos + offset, Quaternion.identity);
         yield return new WaitForSeconds(delay);
         allowFire = true;
+    }
+
+    public void FireEnd()
+    {
+        fire.gameObject.SetActive(false);
     }
 
 
@@ -86,7 +119,10 @@ public class PlayerController : MonoBehaviour
 
     private void Move_started(InputAction.CallbackContext context)
     {
-        isMoving = true;
+        if (!isPaused)
+        {
+            isMoving = true;
+        }
     }
 
     // Update is called once per frame
@@ -101,6 +137,8 @@ public class PlayerController : MonoBehaviour
         {
             playerRB.velocity = new Vector2(0, 0);
         }
+
+        fire.transform.position = playerRB.transform.position + offset;
     }
 
     private void Update()

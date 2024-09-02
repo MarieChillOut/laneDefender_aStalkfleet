@@ -198,6 +198,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2d465054d91e3204ab4807c491f502aa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  animator: {fileID: 8473193285844122904}
   speed: -1
   lives: 5
   score: 500
+  isHit: 0
+  deathClip: {fileID: 8300000, guid: e54ed05aa112f5c41a09378d195f08f3, type: 3}
+  hitClip: {fileID: 8300000, guid: dbf8e67ffbce17d48891f996670bca03, type: 3}
